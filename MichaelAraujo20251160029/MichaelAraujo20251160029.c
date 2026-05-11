@@ -134,7 +134,6 @@ int teste(int a)
         }
     i++;
     }
-    printf("%d\n%d\n%d\n",sDia,sMes,sAno);
     if((sAno > 0 && sAno <= 99) ||
         (sAno >999 && sAno <=9999) ){
 
@@ -266,26 +265,22 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
 */
 int q5(int num)
 {
-    
-    int i = 0;
-    int mil = 0;
-    int cen = 0;
-    int dez = 0;
-    int uni = 0;
-    int r= 0;
-    if(num > 0){
-        if(num >99){
-            if(num > 999){
-                mil = num / 1000;
-                r = num % 1000;
-            }
-            cen = r / 100;
-            r = r % 100;
+    int setNum = 0;
+    while (num > 0)
+    {
+       
+        setNum += (num %10);
+        num /= 10;
+        if(num > 0){
+
+            setNum *=10;
         }
-        dez = r / 10;
-        uni = r;
-    }
-    num = (uni * 1000)+(dez * 100)+(cen * 10)+ mil;
+
+        
+    };
+    
+    
+   num = setNum;
     return num;
 }
 /*
