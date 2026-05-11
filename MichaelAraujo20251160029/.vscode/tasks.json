@@ -1,0 +1,29 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc-13 arquivo de build ativo",
+            "command": "/usr/bin/gcc-13",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}/MichaelAraujo20251160029.c",
+                "${workspaceFolder}/corretor.c",
+                "-o",
+                "${workspaceFolder}/output/MichaelAraujo20251160029"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Compila o código do aluno junto com o corretor."
+        }
+    ],
+    "version": "2.0.0"
+}
