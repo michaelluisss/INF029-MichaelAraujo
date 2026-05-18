@@ -18,7 +18,7 @@
 #include <string.h>
 
 //renomeie o arquivo do include abaixo para trabalho1.h
-#include "MichaelAraujo20251160029.h"
+#include "trabalho1.h"
 
 void testSomar();    //função utilizada para testes
 void testFatorial(); //função utilizada para testes
@@ -38,9 +38,10 @@ int main()
     //testQ2();
     //testQ3();
     //testQ4();
-    testQ5();
-    //testQ6();
+    //testQ5();
+    testQ6();
     //testQ7();
+    return 0;
 }
 
 int ligado =   1;
@@ -210,7 +211,7 @@ void testQ4()
     printf("%d\n", posicoes[4] == 52);
     printf("%d\n", posicoes[5] == 54);
 }
-*/
+
 void testQ5()
 {
     show_log("testQ5()");
@@ -219,16 +220,24 @@ void testQ5()
     printf("%d\n", q5(3) == 3);
     printf("%d\n", q5(5430) == 345);
 }
-/*
+*/
 void testQ6()
 {
     show_log("testQ6()");
+    printf("%d\n", q6(100200, 0) == 4);
+    printf("%d\n", q6(9999, 99) == 3);
+    printf("%d\n", q6(3539343, 39) == 1);
     printf("%d\n", q6(34567368, 3) == 2);
     printf("%d\n", q6(34567368, 4576) == 0);
     printf("%d\n", q6(3539343, 3) == 4);
-    printf("%d\n", q6(3539343, 39) == 1);
+    printf("%d\n", q6(123123, 123) == 2);
+    printf("%d\n", q6(111, 1) == 3);
+    printf("%d\n", q6(1010, 10) == 2);
+    printf("%d\n", q6(505, 5) == 2);
+    printf("%d\n", q6(123456, 999) == 0);
+    printf("%d\n", q6(7777, 77) == 3);
 }
-
+/*
 void testQ7()
 {
     show_log("testQ7()");
