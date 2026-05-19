@@ -247,13 +247,45 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
         Se isCaseSensitive != 1, a pesquisa não deve  considerar diferenças entre maiúsculos e minúsculos.
  @saida
     Um número n >= 0.
-
+*/
 int q3(char *texto, char c, int isCaseSensitive)
 {
-    int qtdOcorrencias = -1;
+    char copia[250];
+    
+    int i = 0; 
+    while (*texto != '\0'){
+        copia[i] = texto[i];
+        i++;
+    }
+     
+    i = 0;
+    if(isCaseSensitive){
+        
+        while (copia[i] != '\0'){
+            if(copia[i]>= 65 && copia[i] <= 90){
+            copia[i]+= 32;}
+        }
+        if(c >= 65 && c <= 90){
+            c += 32;}
 
+    }
+    i = 0;
+    int qtdOcorrencias = 0;
+    while (copia[i] != '\0')
+    {
+       if(copia[i] == c){
+        qtdOcorrencias++;
+       }
+       i++;
+    }
+    
+    
+
+    
+    
     return qtdOcorrencias;
 }
+/*
 
 
  Q4 = encontrar palavra em texto

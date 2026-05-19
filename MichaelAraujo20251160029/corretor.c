@@ -17,11 +17,11 @@
 #include <stdio.h>
 #include <string.h>
 
-//renomeie o arquivo do include abaixo para trabalho1.h
+// renomeie o arquivo do include abaixo para trabalho1.h
 #include "trabalho1.h"
 
-void testSomar();    //função utilizada para testes
-void testFatorial(); //função utilizada para testes
+void testSomar();    // função utilizada para testes
+void testFatorial(); // função utilizada para testes
 void testQ1();
 void testQ2();
 void testQ3();
@@ -32,24 +32,24 @@ void testQ7();
 
 int main()
 {
-    //testSomar();
-    //testFatorial();
-    //testQ1();
-    //testQ2();
-    //testQ3();
-    //testQ4();
-    //testQ5();
-    testQ6();
-    //testQ7();
+    // testSomar();
+    // testFatorial();
+    // testQ1();
+    // testQ2();
+     testQ3();
+    // testQ4();
+    // testQ5();
+    //testQ6();
+    // testQ7();
     return 0;
 }
 
-int ligado =   1;
+int ligado = 1;
 void show_log(char *str)
 {
     if (ligado)
         printf("###%s###\n", str);
-}  
+}
 /*
 void testSomar()
 {
@@ -165,7 +165,7 @@ void testQ2()
     printf("%d\n", dma.qtdMeses == 1);
     printf("%d\n", dma.qtdAnos == 0);
 }
-
+*/
 void testQ3()
 {
     show_log("testQ3()");
@@ -177,7 +177,7 @@ void testQ3()
     printf("%d\n", q3(str, 'l', 0) == 1);
     printf("%d\n", q3(str, 'L', 0) == 1);
 }
-
+/*
 void testQ4()
 {
     show_log("testQ4()");
