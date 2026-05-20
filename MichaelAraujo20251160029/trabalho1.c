@@ -247,23 +247,25 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
         Se isCaseSensitive != 1, a pesquisa não deve  considerar diferenças entre maiúsculos e minúsculos.
  @saida
     Um número n >= 0.
-*/
+
 int q3(char *texto, char c, int isCaseSensitive)
 {
     char copia[250];
-    
-    int i = 0; 
-    while (*texto != '\0'){
-        copia[i] = texto[i];
+
+    int i = 0;
+    while (*(texto + i) != '\0'){
+        copia[i] = *(texto + i);
         i++;
     }
-     
+
     i = 0;
-    if(isCaseSensitive){
-        
+    if(!isCaseSensitive){
+
         while (copia[i] != '\0'){
+
             if(copia[i]>= 65 && copia[i] <= 90){
             copia[i]+= 32;}
+            i++;
         }
         if(c >= 65 && c <= 90){
             c += 32;}
@@ -278,13 +280,8 @@ int q3(char *texto, char c, int isCaseSensitive)
        }
        i++;
     }
-    
-    
-
-    
-    
     return qtdOcorrencias;
-}
+}*/
 /*
 
 
@@ -300,76 +297,116 @@ int q3(char *texto, char c, int isCaseSensitive)
         posicoes[1] = 16;
         Observe que o índice da posição no texto deve começar ser contado a partir de 1.
         O retorno da função, n, nesse caso seria 1;
-
+*/
 
 int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
-    int qtdOcorrencias = -1;
-
+    int i = 0;              // índice para percorrer o texto
+    int j = 0;              // índice para percorrer a palavra de busca
+    int p = 0;              // índice para preencher o vetor de posições
+    int qtdOcorrencias = 0; // contador de ocorrências encontradas
+    int tamBusca = 0;       // tamanho da palavra de busca
+    int encontrou = 0;      // flag: 1 = encontrou a palavra, 0 = não encontrou
+    
+    // Calcula o tamanho da palavra de busca percorrendo até o '\0'
+    while (*(strBusca + tamBusca) != '\0')
+    {
+        tamBusca++;
+    }
+    
+    while (*(strTexto + i) != '\0')
+    {
+        encontrou = 1;
+        j = 0;
+        
+        while (*(strBusca + j) != '\0')
+        {
+            if (*(strTexto + i + j) != *(strBusca + j))
+            {
+                encontrou = 0;
+                break; // sai do loop interno
+            }
+            j++;
+        }
+        
+        if (encontrou)
+        {
+            posicoes[p] = i + 1;
+            posicoes[p + 1] = i + tamBusca;
+            p += 2;
+            qtdOcorrencias++;
+        }
+        
+        i++;
+    }
+    
+    // Retorna a quantidade total de ocorrências 
     return qtdOcorrencias;
 }
 
+/*
 
- Q5 = inverte número
- @objetivo
-    Inverter número inteiro
- @entrada
-    uma int num.
- @saida
-    Número invertido
+
+Q5 = inverte número
+@objetivo
+   Inverter número inteiro
+@entrada
+   uma int num.
+@saida
+   Número invertido
 
 int q5(int num)
 {
-    int setNum = 0;
-    while (num > 0){
-        setNum = setNum * 10 + (num % 10);
-        num /= 10;
-    }
-    return setNum;
+   int setNum = 0;
+   while (num > 0){
+       setNum = setNum * 10 + (num % 10);
+       num /= 10;
+   }
+   return setNum;
 }
 
 
- Q6 = ocorrência de um número em outro
- @objetivo
-    Verificar quantidade de vezes da ocorrência de um número em outro
- @entrada
-    Um número base (numerobase) e um número de busca (numerobusca).
- @saida
-    Quantidade de vezes que número de busca ocorre em número base
+Q6 = ocorrência de um número em outro
+@objetivo
+   Verificar quantidade de vezes da ocorrência de um número em outro
+@entrada
+   Um número base (numerobase) e um número de busca (numerobusca).
+@saida
+   Quantidade de vezes que número de busca ocorre em número base
 
-*/
+
 int q6(int numerobase, int numerobusca)
 {
-    int qtdOcorrencias = 0;
-    
-    int qtdCasas = 1;
+   int qtdOcorrencias = 0;
 
-    int n = numerobusca;
-    if(numerobusca== 0){
-        qtdCasas = 10;
-    }
-    while (n!=0)
-    {
-        qtdCasas *=10;
-        n = n / 10;
-        
-    }
-    
-    int numRecebido = 0;
-    while(numerobase!=0){
-        numRecebido = numerobase % qtdCasas;
-        if(numerobusca == numRecebido){
-            qtdOcorrencias++;
-        }
-        numerobase /= 10;
+   int qtdCasas = 1;
+
+   int n = numerobusca;
+   if(numerobusca== 0){
+       qtdCasas = 10;
+   }
+   while (n!=0)
+   {
+       qtdCasas *=10;
+       n = n / 10;
+
+   }
+
+   int numRecebido = 0;
+   while(numerobase!=0){
+       numRecebido = numerobase % qtdCasas;
+       if(numerobusca == numRecebido){
+           qtdOcorrencias++;
+       }
+       numerobase /= 10;
 
 
-    }
-        
-        
-    
-    return qtdOcorrencias;
-}
+   }
+
+
+
+   return qtdOcorrencias;
+}*/
 
 /* Q7 = jogo busca palavras
  @objetivo
@@ -445,4 +482,3 @@ DataQuebrada quebraData(char data[]){
 
   return dq;
 }*/
-
