@@ -32,15 +32,15 @@ void testQ7();
 
 int main()
 {
-    // testSomar();
-    // testFatorial();
-    // testQ1();
-    // testQ2();
-    // testQ3();
-     testQ4();
-    // testQ5();
-    //testQ6();
-    // testQ7();
+    testSomar();
+    testFatorial();
+    testQ1();
+    testQ2();
+    testQ3();
+    testQ4();
+    testQ5();
+    testQ6();
+     testQ7();
     return 0;
 }
 
@@ -50,7 +50,7 @@ void show_log(char *str)
     if (ligado)
         printf("###%s###\n", str);
 }
-/*
+
 void testSomar()
 {
     show_log("testeSomar()");
@@ -71,7 +71,7 @@ void testFatorial()
     printf("%d\n", fatorial(1) == 1);
     printf("%d\n", fatorial(5) == 120);
 }
-*/
+
 void testQ1()
 {
     show_log("testQ1()");
@@ -111,7 +111,6 @@ void testQ1()
     strcpy(str, "01/01/0000");
     printf("%d\n", q1(str) == 0);
 }
-/*
 void testQ2()
 {
     show_log("testQ2()");
@@ -166,6 +165,7 @@ void testQ2()
     printf("%d\n", dma.qtdAnos == 0);
 }
 
+
 void testQ3()
 {
     show_log("testQ3()");
@@ -176,8 +176,7 @@ void testQ3()
     printf("%d\n", q3(str, 'L', 0) == 1);
     printf("%d\n", q3(str, 'a', 0) == 3);
     printf("%d\n", q3(str, 'b', 0) == 0);
-}*/
-
+}
 void testQ4()
 {
     show_log("testQ4()");
@@ -212,7 +211,6 @@ void testQ4()
     printf("%d\n", posicoes[4] == 52);
     printf("%d\n", posicoes[5] == 54);
 }
-/*
 void testQ5()
 {
     show_log("testQ5()");
@@ -237,8 +235,8 @@ void testQ6()
     printf("%d\n", q6(505, 5) == 2);
     printf("%d\n", q6(123456, 999) == 0);
     printf("%d\n", q6(7777, 77) == 3);
-}*/
-/*
+}
+
 void testQ7()
 {
     show_log("testQ7()");
@@ -262,4 +260,3 @@ void testQ7()
     printf("%d\n", q7(matrix, stringBusca) == 1);
 
 }
-*/

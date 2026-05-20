@@ -96,7 +96,7 @@ int q1(char data[])
     int sDia = 0;
     int sMes = 0;
     int sAno = 0;
-    // quebrar a string data em strings sDia, sMes, sAno
+
     while (data[i] != '\0')
     {
         if (data[i] == '/')
@@ -212,32 +212,49 @@ int q1(char data[])
     4 -> datainicial > datafinal
     Caso o cálculo esteja correto, os atributos qtdDias, qtdMeses e qtdAnos devem ser preenchidos com os valores correspondentes.
 
+*/
 DiasMesesAnos q2(char datainicial[], char datafinal[])
 {
-
-    //calcule os dados e armazene nas três variáveis a seguir
     DiasMesesAnos dma;
-
-    if (q1(datainicial) == 0){
-      dma.retorno = 2;
-      return dma;
-    }else if (q1(datafinal) == 0){
-      dma.retorno = 3;
-      return dma;
-    }else{
-      //verifique se a data final não é menor que a data inicial
-
-      //calcule a distancia entre as datas
-
-
-      //se tudo der certo
-      dma.retorno = 1;
-      return dma;
-
+    DataQuebrada dq1, dq2;
+    
+    if (q1(datainicial) == 0) {
+        dma.retorno = 2;
+        return dma;
     }
-
+    
+    if (q1(datafinal) == 0) {
+        dma.retorno = 3;
+        return dma;
+    }
+    
+    dq1 = quebraData(datainicial);
+    dq2 = quebraData(datafinal);
+    
+    if (dq1.iAno > dq2.iAno || 
+        (dq1.iAno == dq2.iAno && dq1.iMes > dq2.iMes) || 
+        (dq1.iAno == dq2.iAno && dq1.iMes == dq2.iMes && dq1.iDia > dq2.iDia)) {
+        dma.retorno = 4;
+        return dma;
+    }
+    
+    dma.qtdDias = dq2.iDia - dq1.iDia;
+    dma.qtdMeses = dq2.iMes - dq1.iMes;
+    dma.qtdAnos = dq2.iAno - dq1.iAno;
+    
+    if (dma.qtdDias < 0) {
+        dma.qtdDias += 30;
+        dma.qtdMeses--;
+    }
+    
+    if (dma.qtdMeses < 0) {
+        dma.qtdMeses += 12;
+        dma.qtdAnos--;
+    }
+    
+    dma.retorno = 1;
+    return dma;
 }
-*/
 /*
  Q3 = encontrar caracter em texto
  @objetivo
@@ -247,7 +264,7 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
         Se isCaseSensitive != 1, a pesquisa não deve  considerar diferenças entre maiúsculos e minúsculos.
  @saida
     Um número n >= 0.
-
+ */
 int q3(char *texto, char c, int isCaseSensitive)
 {
     char copia[250];
@@ -257,6 +274,7 @@ int q3(char *texto, char c, int isCaseSensitive)
         copia[i] = *(texto + i);
         i++;
     }
+    copia[i] = '\0';
 
     i = 0;
     if(!isCaseSensitive){
@@ -281,7 +299,7 @@ int q3(char *texto, char c, int isCaseSensitive)
        i++;
     }
     return qtdOcorrencias;
-}*/
+}
 /*
 
 
@@ -297,18 +315,17 @@ int q3(char *texto, char c, int isCaseSensitive)
         posicoes[1] = 16;
         Observe que o índice da posição no texto deve começar ser contado a partir de 1.
         O retorno da função, n, nesse caso seria 1;
-*/
 
+*/
 int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
-    int i = 0;              // índice para percorrer o texto
-    int j = 0;              // índice para percorrer a palavra de busca
-    int p = 0;              // índice para preencher o vetor de posições
-    int qtdOcorrencias = 0; // contador de ocorrências encontradas
-    int tamBusca = 0;       // tamanho da palavra de busca
-    int encontrou = 0;      // flag: 1 = encontrou a palavra, 0 = não encontrou
+    int i = 0;
+    int j = 0;
+    int p = 0;
+    int qtdOcorrencias = 0;
+    int tamBusca = 0;
+    int encontrou = 0;
     
-    // Calcula o tamanho da palavra de busca percorrendo até o '\0'
     while (*(strBusca + tamBusca) != '\0')
     {
         tamBusca++;
@@ -324,7 +341,7 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
             if (*(strTexto + i + j) != *(strBusca + j))
             {
                 encontrou = 0;
-                break; // sai do loop interno
+                break;
             }
             j++;
         }
@@ -340,13 +357,10 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
         i++;
     }
     
-    // Retorna a quantidade total de ocorrências 
     return qtdOcorrencias;
 }
 
 /*
-
-
 Q5 = inverte número
 @objetivo
    Inverter número inteiro
@@ -354,7 +368,7 @@ Q5 = inverte número
    uma int num.
 @saida
    Número invertido
-
+*/
 int q5(int num)
 {
    int setNum = 0;
@@ -365,7 +379,7 @@ int q5(int num)
    return setNum;
 }
 
-
+/*
 Q6 = ocorrência de um número em outro
 @objetivo
    Verificar quantidade de vezes da ocorrência de um número em outro
@@ -373,8 +387,7 @@ Q6 = ocorrência de um número em outro
    Um número base (numerobase) e um número de busca (numerobusca).
 @saida
    Quantidade de vezes que número de busca ocorre em número base
-
-
+*/
 int q6(int numerobase, int numerobusca)
 {
    int qtdOcorrencias = 0;
@@ -406,22 +419,51 @@ int q6(int numerobase, int numerobusca)
 
 
    return qtdOcorrencias;
-}*/
+}
 
-/* Q7 = jogo busca palavras
- @objetivo
-    Verificar se existe uma string em uma matriz de caracteres em todas as direções e sentidos possíves
- @entrada
-    Uma matriz de caracteres e uma string de busca (palavra).
- @saida
-    1 se achou 0 se não achou
-
-
- int q7(char matriz[8][10], char palavra[5])
- {
-     int achou;
-     return achou;
- }
+/*
+Q7 = jogo busca palavras
+@objetivo
+   Verificar se existe uma string em uma matriz de caracteres em todas as direções e sentidos possíves
+@entrada
+   Uma matriz de caracteres e uma string de busca (palavra).
+@saida
+   1 se achou 0 se não achou
+*/
+int q7(char matriz[8][10], char palavra[5])
+{
+    int linha, coluna, p, dirLinha, dirColuna;
+    int tamanho = 0;
+    
+    while (palavra[tamanho] != '\0') {
+        tamanho++;
+    }
+    
+    for (linha = 0; linha < 8; linha++) {
+        for (coluna = 0; coluna < 10; coluna++) {
+            for (dirLinha = -1; dirLinha <= 1; dirLinha++) {
+                for (dirColuna = -1; dirColuna <= 1; dirColuna++) {
+                    if (dirLinha == 0 && dirColuna == 0) continue;
+                    
+                    p = 0;
+                    int l = linha;
+                    int c = coluna;
+                    
+                    while (p < tamanho && l >= 0 && l < 8 && c >= 0 && c < 10) {
+                        if (matriz[l][c] != palavra[p]) break;
+                        l += dirLinha;
+                        c += dirColuna;
+                        p++;
+                    }
+                    
+                    if (p == tamanho) return 1;
+                }
+            }
+        }
+    }
+    
+    return 0;
+}
 
 
 
@@ -481,4 +523,4 @@ DataQuebrada quebraData(char data[]){
     dq.valido = 1;
 
   return dq;
-}*/
+}
