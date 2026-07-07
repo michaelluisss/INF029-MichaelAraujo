@@ -14,7 +14,6 @@ typedef struct reg {
     struct reg *prox;
 } No;
 
-<<<<<<< HEAD
 typedef struct 
 {
     int *auxiliar;
@@ -23,8 +22,6 @@ typedef struct
 }PosicaoPrincipal;
 
 
-=======
->>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 int criarEstruturaAuxiliar(int posicao, int tamanho);
 int inserirNumeroEmEstrutura(int posicao, int valor);
 int excluirNumeroDoFinaldaEstrutura(int posicao);
