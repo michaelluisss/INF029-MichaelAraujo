@@ -4,23 +4,37 @@
 
 #include "trabalho2.h"
 
+<<<<<<< HEAD
 PosicaoPrincipal vetorPrincipal[TAM];
 
 
 /*Objetivo: criar estrutura auxiliar na posição 'posicao'.
 com tamanho 'tamanho
+=======
+int vetorPrincipal[TAM];
+
+/*
+Objetivo: criar estrutura auxiliar na posição 'posicao'.
+com tamanho 'tamanho'
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 Rertono (int)
     SUCESSO - criado com sucesso
     JA_TEM_ESTRUTURA_AUXILIAR - já tem estrutura na posição
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
     SEM_ESPACO_DE_MEMORIA - Sem espaço de memória
+<<<<<<< HEAD
     TAMANHO_INVALIDO - o tamanho deve ser maior ou igual a 1'*/
 
+=======
+    TAMANHO_INVALIDO - o tamanho deve ser maior ou igual a 1
+*/
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 int criarEstruturaAuxiliar(int posicao, int tamanho)
 {
 
     int retorno = 0;
+<<<<<<< HEAD
     
     // se posição é um valor válido {entre 1 e 10}
     if(posicao<1 && posicao>10){
@@ -44,6 +58,17 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
     retorno = TAMANHO_INVALIDO;
     // deu tudo certo, crie
 
+=======
+    // a posicao pode já existir estrutura auxiliar
+    retorno = JA_TEM_ESTRUTURA_AUXILIAR;
+    // se posição é um valor válido {entre 1 e 10}
+    retorno = POSICAO_INVALIDA;
+    // o tamanho ser muito grande
+    retorno = SEM_ESPACO_DE_MEMORIA;
+    // o tamanho nao pode ser menor que 1
+    retorno = TAMANHO_INVALIDO;
+    // deu tudo certo, crie
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
     retorno = SUCESSO;
 
     return retorno;
@@ -64,9 +89,15 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
     int existeEstruturaAuxiliar = 0;
     int temEspaco = 0;
     int posicao_invalida = 0;
+<<<<<<< HEAD
     
     if (posicao_invalida)
     retorno = POSICAO_INVALIDA;
+=======
+
+    if (posicao_invalida)
+        retorno = POSICAO_INVALIDA;
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
     else
     {
         // testar se existe a estrutura auxiliar
@@ -87,7 +118,11 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
             retorno = SEM_ESTRUTURA_AUXILIAR;
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
     return retorno;
 }
 
@@ -97,19 +132,29 @@ ex: suponha os valores [3, 8, 7, 9,  ,  ]. Após excluir, a estrutura deve ficar
 Obs. Esta é uma exclusão lógica
 
 Rertono (int)
+<<<<<<< HEAD
 SUCESSO - excluido com sucesso
+=======
+    SUCESSO - excluido com sucesso
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
     ESTRUTURA_AUXILIAR_VAZIA - estrutura vazia
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 int excluirNumeroDoFinaldaEstrutura(int posicao)
 {
     int retorno = SUCESSO;
     return retorno;
 }
 
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 /*
 Objetivo: excluir o numero 'valor' da estrutura auxiliar da posição 'posicao'.
 Caso seja excluido, os números posteriores devem ser movidos para as posições anteriores
@@ -122,16 +167,25 @@ Rertono (int)
     NUMERO_INEXISTENTE - Número não existe
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 
+<<<<<<< HEAD
 *//*
+=======
+*/
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
     int retorno = SUCESSO;
     return retorno;
 }
+<<<<<<< HEAD
 */
 
 // se posição é um valor válido {entre 1 e 10}
 /*
+=======
+
+// se posição é um valor válido {entre 1 e 10}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 int ehPosicaoValida(int posicao)
 {
     int retorno = 0;
@@ -140,11 +194,18 @@ int ehPosicaoValida(int posicao)
         retorno = POSICAO_INVALIDA;
     }
     else
+<<<<<<< HEAD
     retorno = SUCESSO;
     
     return retorno;
 }
 */
+=======
+        retorno = SUCESSO;
+
+    return retorno;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 /*
 Objetivo: retorna os números da estrutura auxiliar da posição 'posicao (1..10)'.
 os números devem ser armazenados em vetorAux
@@ -154,6 +215,7 @@ Retorno (int)
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
+<<<<<<< HEAD
 /*
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
@@ -163,6 +225,15 @@ int retorno = 0;
 return retorno;
 }
 */
+=======
+int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
+{
+
+    int retorno = 0;
+
+    return retorno;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: retorna os números ordenados da estrutura auxiliar da posição 'posicao (1..10)'.
@@ -173,6 +244,7 @@ Rertono (int)
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
+<<<<<<< HEAD
 /*
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
@@ -183,6 +255,16 @@ int retorno = 0;
 return retorno;
 }
 */
+=======
+int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
+{
+
+    int retorno = 0;
+
+    
+    return retorno;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: retorna os números de todas as estruturas auxiliares.
@@ -192,6 +274,7 @@ Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - todas as estruturas auxiliares estão vazias
 */
+<<<<<<< HEAD
 /*
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
@@ -200,6 +283,14 @@ int retorno = 0;
 return retorno;
 }
 */
+=======
+int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
+{
+
+    int retorno = 0;
+    return retorno;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: retorna os números ordenados de todas as estruturas auxiliares.
@@ -209,6 +300,7 @@ Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     TODAS_ESTRUTURAS_AUXILIARES_VAZIAS - todas as estruturas auxiliares estão vazias
 */
+<<<<<<< HEAD
 /*
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
 {
@@ -217,6 +309,14 @@ int retorno = 0;
 return retorno;
 }
 */
+=======
+int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
+{
+
+    int retorno = 0;
+    return retorno;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: modificar o tamanho da estrutura auxiliar da posição 'posicao' para o novo tamanho 'novoTamanho' + tamanho atual
@@ -229,6 +329,7 @@ Rertono (int)
     NOVO_TAMANHO_INVALIDO - novo tamanho não pode ser negativo
     SEM_ESPACO_DE_MEMORIA - erro na alocação do novo valor
 */
+<<<<<<< HEAD
 /*
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 {
@@ -237,6 +338,14 @@ int retorno = 0;
 return retorno;
 }
 */
+=======
+int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
+{
+
+    int retorno = 0;
+    return retorno;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: retorna a quantidade de elementos preenchidos da estrutura auxiliar da posição 'posicao'.
@@ -247,6 +356,7 @@ Retorno (int)
     ESTRUTURA_AUXILIAR_VAZIA - estrutura auxiliar vazia
     Um número int > 0 correpondente a quantidade de elementos preenchidos da estrutura
 */
+<<<<<<< HEAD
 /*
 int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 {
@@ -256,6 +366,15 @@ int retorno = 0;
 return retorno;
 }
 */
+=======
+int getQuantidadeElementosEstruturaAuxiliar(int posicao)
+{
+
+    int retorno = 0;
+
+    return retorno;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: montar a lista encadeada com cabeçote com todos os números presentes em todas as estruturas.
@@ -263,6 +382,7 @@ Objetivo: montar a lista encadeada com cabeçote com todos os números presentes
 Retorno (No*)
     NULL, caso não tenha nenhum número nas listas
     No*, ponteiro para o início da lista com cabeçote
+<<<<<<< HEAD
 *//*
 No *montarListaEncadeadaComCabecote()
 {
@@ -270,27 +390,49 @@ No *montarListaEncadeadaComCabecote()
 return NULL;
 }
 */
+=======
+*/
+No *montarListaEncadeadaComCabecote()
+{
+
+    return NULL;
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: retorna os números da lista enceada com cabeçote armazenando em vetorAux.
 Retorno void
+<<<<<<< HEAD
 *//*
+=======
+*/
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 void getDadosListaEncadeadaComCabecote(No *inicio, int vetorAux[])
 {
 }
 
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 /*
 Objetivo: Destruir a lista encadeada com cabeçote a partir de início.
 O ponteiro inicio deve ficar com NULL.
 
 Retorno 
     void.
+<<<<<<< HEAD
 *//*
 void destruirListaEncadeadaComCabecote(No **inicio)
 {
 }
 */
+=======
+*/
+void destruirListaEncadeadaComCabecote(No **inicio)
+{
+}
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 
 /*
 Objetivo: inicializa o programa. deve ser chamado ao inicio do programa 
@@ -299,12 +441,15 @@ Objetivo: inicializa o programa. deve ser chamado ao inicio do programa
 
 void inicializar()
 {
+<<<<<<< HEAD
     printf("inicializando...");
     for(int i = 0; i < TAM;i++){
         vetorPrincipal[i].auxiliar = NULL;
         vetorPrincipal[i].tamanhoMax = 0;
         vetorPrincipal[i].qtdatual = 0;
     }
+=======
+>>>>>>> 301c72488942325fbab2dd76bbefcb9e4ed994f4
 }
 
 /*
