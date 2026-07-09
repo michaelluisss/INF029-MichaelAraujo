@@ -5,21 +5,24 @@
 
 int menu();
 
-void dobrar(int *x);
-
 int menu()
 {
     int op;
-    printf("Digite as opção desejada\n");
+    printf("\n======================================\n");
+    printf("Digite a opcao desejada\n");
     printf("0 - Sair\n");
-    printf("1 - Inserir\n");
-    printf("2 - Excluir\n");
-    printf("3 - Listar uma estrutura\n");
-    printf("4 - Dobrar Numero\n");
-    printf("5 - \n");
+    printf("1 - Inserir numero\n");
+    printf("2 - Excluir numero\n");
+    printf("3 - Listar estrutura auxiliar\n");
+    printf("4 - Listar todas as estruturas\n");
+    printf("5 - Listar ordenado (estrutura auxiliar)\n");
+    printf("6 - Listar todos ordenados\n");
+    printf("7 - Aumentar tamanho de estrutura\n");
+    printf("8 - Dobrar numero\n");
+    printf("======================================\n");
     scanf("%d", &op);
     return op;
-    }
+}
     
 int main()
 {
@@ -27,6 +30,9 @@ int main()
     int op;
     int sair = 0;
     int ret;
+    int posicao, valor, tamanho, novoTamanho;
+    int i;
+    
     while (!sair)
     {
         op = menu();
@@ -37,85 +43,229 @@ int main()
         {
             sair = 1;
             finalizar();
+            printf("Programa finalizado!\n");
             break;
         }
         case 1:
         { 
+            printf("Qual a posicao (1-10)? ");
+            scanf("%d", &posicao);
             
-            ret = inserirNumeroEmEstrutura(5, 25);
+            if(posicao < 1 || posicao > 10){
+                printf("Posicao invalida!\n");
+                break;
+            }
             
-            if (ret == SUCESSO)
-            {
-                printf("Inserido com sucesso");
+            ret = getQuantidadeElementosEstruturaAuxiliar(posicao);
+            
+            if(ret == SEM_ESTRUTURA_AUXILIAR || ret == ESTRUTURA_AUXILIAR_VAZIA){
+                printf("Qual o tamanho da estrutura? ");
+                scanf("%d", &tamanho);
+                
+                ret = criarEstruturaAuxiliar(posicao, tamanho);
+                if(ret != SUCESSO){
+                    printf("Erro ao criar estrutura!\n");
+                    break;
+                }
             }
-            else if (ret == SEM_ESPACO)
-            {
-                printf("Sem Espaço");
+            
+            printf("Digite o numero a inserir: ");
+            scanf("%d", &valor);
+            
+            ret = inserirNumeroEmEstrutura(posicao, valor);
+            
+            if (ret == SUCESSO){
+                printf("Inserido com sucesso!\n");
             }
-            else if (ret == SEM_ESTRUTURA_AUXILIAR)
-            {
-                printf("Sem estrutura Auxiliar");
+            else if (ret == SEM_ESPACO){
+                printf("Sem espaco na estrutura!\n");
+            }
+            else if (ret == SEM_ESTRUTURA_AUXILIAR){
+                printf("Sem estrutura auxiliar!\n");
+            }
+            else if (ret == POSICAO_INVALIDA){
+                printf("Posicao invalida!\n");
             }
             break;
         }
-        /*
         case 2:
-        { //excluir
-            //TODO
+        {
+            printf("Qual a posicao (1-10)? ");
+            scanf("%d", &posicao);
+            
+            printf("Digite o numero a excluir: ");
+            scanf("%d", &valor);
+            
+            ret = excluirNumeroEspecificoDeEstrutura(posicao, valor);
+            
+            if(ret == SUCESSO){
+                printf("Excluido com sucesso!\n");
+            }
+            else if(ret == NUMERO_INEXISTENTE){
+                printf("Numero nao encontrado!\n");
+            }
+            else if(ret == ESTRUTURA_AUXILIAR_VAZIA){
+                printf("Estrutura vazia!\n");
+            }
+            else if(ret == SEM_ESTRUTURA_AUXILIAR){
+                printf("Sem estrutura auxiliar!\n");
+            }
+            else if(ret == POSICAO_INVALIDA){
+                printf("Posicao invalida!\n");
+            }
             break;
         }
 
         case 3:
-        { //recuperar dados estrutura auxiliar
-            int posicao, retorno;
-            printf("Qual a estrutura a ser listada (1..10)?");
+        {
+            printf("Qual a estrutura a ser listada (1-10)? ");
             scanf("%d", &posicao);
 
             int qtd = getQuantidadeElementosEstruturaAuxiliar(posicao);
 
-            if (qtd == POSICAO_INVALIDA)
-            {
-                printf("Posição inválida");
+            if (qtd == POSICAO_INVALIDA){
+                printf("Posicao invalida!\n");
             }
-            else
-            { // existe elemento
-             int vetorAux[1];
+            else if(qtd == SEM_ESTRUTURA_AUXILIAR){
+                printf("Sem estrutura auxiliar!\n");
+            }
+            else if(qtd == ESTRUTURA_AUXILIAR_VAZIA){
+                printf("Estrutura auxiliar vazia!\n");
+            }
+            else {
+                int vetorAux[100];
+                ret = getDadosEstruturaAuxiliar(posicao, vetorAux);
 
-                retorno = getDadosEstruturaAuxiliar(posicao, vetorAux);
-
-                if (retorno == SUCESSO)
-                {
-                    //imprimir para os dados para o usuário
-                    int i = 0;
-                    for (; i < qtd; i++)
-                    {
-                        printf("%d", vetorAux[i]);
+                if (ret == SUCESSO){
+                    printf("Elementos da estrutura %d: ", posicao);
+                    for (i = 0; i < qtd; i++){
+                        printf("%d ", vetorAux[i]);
                     }
+                    printf("\n");
                 }
             }
             break;
         }
 
-        case 10:
-        { //dobrar
-            //ler um numero
-            int valor;
-            scanf("%i", &valor);
-
-            dobrar(&valor);
-
-            //passar para um funcao (void dobrar(...)) que recebe o numero e dobra (EstruturaVetores.c)
-
-            printf("%i", valor);
-
+        case 4:
+        {
+            int vetorAux[100];
+            ret = getDadosDeTodasEstruturasAuxiliares(vetorAux);
+            
+            if(ret == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS){
+                printf("Todas as estruturas estao vazias!\n");
+            }
+            else if(ret == SUCESSO){
+                int totalElementos = 0;
+                for(i = 0; i < 10; i++){
+                    totalElementos += getQuantidadeElementosEstruturaAuxiliar(i + 1);
+                    if(getQuantidadeElementosEstruturaAuxiliar(i + 1) > 0 && 
+                       getQuantidadeElementosEstruturaAuxiliar(i + 1) != ESTRUTURA_AUXILIAR_VAZIA &&
+                       getQuantidadeElementosEstruturaAuxiliar(i + 1) != SEM_ESTRUTURA_AUXILIAR){
+                        totalElementos++;
+                    }
+                }
+                printf("Todos os elementos: ");
+                for(i = 0; i < 100 && vetorAux[i] != 0; i++){
+                    printf("%d ", vetorAux[i]);
+                }
+                printf("\n");
+            }
             break;
         }
-        
-        */
+
+        case 5:
+        {
+            printf("Qual a estrutura (1-10)? ");
+            scanf("%d", &posicao);
+
+            int qtd = getQuantidadeElementosEstruturaAuxiliar(posicao);
+
+            if (qtd == POSICAO_INVALIDA){
+                printf("Posicao invalida!\n");
+            }
+            else if(qtd == SEM_ESTRUTURA_AUXILIAR){
+                printf("Sem estrutura auxiliar!\n");
+            }
+            else if(qtd == ESTRUTURA_AUXILIAR_VAZIA){
+                printf("Estrutura auxiliar vazia!\n");
+            }
+            else {
+                int vetorAux[100];
+                ret = getDadosOrdenadosEstruturaAuxiliar(posicao, vetorAux);
+
+                if (ret == SUCESSO){
+                    printf("Elementos ordenados da estrutura %d: ", posicao);
+                    for (i = 0; i < qtd; i++){
+                        printf("%d ", vetorAux[i]);
+                    }
+                    printf("\n");
+                }
+            }
+            break;
+        }
+
+        case 6:
+        {
+            int vetorAux[100];
+            ret = getDadosOrdenadosDeTodasEstruturasAuxiliares(vetorAux);
+            
+            if(ret == TODAS_ESTRUTURAS_AUXILIARES_VAZIAS){
+                printf("Todas as estruturas estao vazias!\n");
+            }
+            else if(ret == SUCESSO){
+                printf("Todos os elementos ordenados: ");
+                for(i = 0; i < 100 && vetorAux[i] != 0; i++){
+                    printf("%d ", vetorAux[i]);
+                }
+                printf("\n");
+            }
+            break;
+        }
+
+        case 7:
+        {
+            printf("Qual a estrutura (1-10)? ");
+            scanf("%d", &posicao);
+            
+            printf("Quantas posicoes extras? ");
+            scanf("%d", &novoTamanho);
+            
+            ret = modificarTamanhoEstruturaAuxiliar(posicao, novoTamanho);
+            
+            if(ret == SUCESSO){
+                printf("Tamanho modificado com sucesso!\n");
+            }
+            else if(ret == SEM_ESTRUTURA_AUXILIAR){
+                printf("Sem estrutura auxiliar!\n");
+            }
+            else if(ret == POSICAO_INVALIDA){
+                printf("Posicao invalida!\n");
+            }
+            else if(ret == NOVO_TAMANHO_INVALIDO){
+                printf("Novo tamanho invalido!\n");
+            }
+            else if(ret == SEM_ESPACO_DE_MEMORIA){
+                printf("Sem espaco de memoria!\n");
+            }
+            break;
+        }
+
+        case 8:
+        {
+            int numero;
+            printf("Digite um numero para dobrar: ");
+            scanf("%d", &numero);
+            
+            dobrar(&numero);
+            
+            printf("Numero dobrado: %d\n", numero);
+            break;
+        }
 
         default:
         {
-            printf("opcao inválida\n");
+            printf("Opcao invalida!\n");
         }
         }
     }

@@ -20,14 +20,14 @@ int main()
     inicializar();
     testeInserirSemNada();
     testeCriarEstrutura();
-    //testeInserirComEstrutura();
-    //testeExcluir();
-    //testeExcluirNumeroEspecifico();
-    //testeListar();
-    //testeRetornarTodosNumeros();
-    //testeMudarTamanhoEstrutura();
-    //testeListaEncadeada();
-    //finalizar();
+    testeInserirComEstrutura();
+    testeExcluir();
+    testeExcluirNumeroEspecifico();
+    testeListar();
+    testeRetornarTodosNumeros();
+    testeMudarTamanhoEstrutura();
+    testeListaEncadeada();
+    finalizar();
 }
 int ligado = 0;
 void show_log(char *str)
@@ -56,26 +56,18 @@ void testeCriarEstrutura()
     printf("%d\n", criarEstruturaAuxiliar(2, 3) == SUCESSO);
     printf("%d\n", criarEstruturaAuxiliar(2, 6) == JA_TEM_ESTRUTURA_AUXILIAR);
 }
-/*
-2 [ , , ]
-*/
 
 void testeInserirComEstrutura()
 {
     show_log("testeInserirComEstrutura()");
-    //###  int inserirNumeroEmEstrutura(int valor, int posicao); ###
     printf("%d\n", inserirNumeroEmEstrutura(2, 4) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, -2) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, 6) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, 5) == SEM_ESPACO);
 }
-/*
-2 [4,-2,6]
-*/
 void testeExcluir()
 {
     show_log("testeExcluir()");
-    //###  int excluirNumeroDoFinaldaEstrutura(int posicao); ###
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(0) == POSICAO_INVALIDA);
@@ -84,14 +76,9 @@ void testeExcluir()
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == ESTRUTURA_AUXILIAR_VAZIA);
 }
 
-/*
-2 [ , , ]
-*/
-
 void testeExcluirNumeroEspecifico()
 {
     show_log("testeExcluirNumeroEspecifico()");
-    //###  int excluirNumeroEspecificoDeEstrutura(int posicao, int valor); ###
     printf("%d\n", criarEstruturaAuxiliar(9, 3) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(9, 7) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(9, 4) == SUCESSO);
@@ -100,14 +87,10 @@ void testeExcluirNumeroEspecifico()
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 4) == SUCESSO);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(1, 2) == SEM_ESTRUTURA_AUXILIAR);
 }
-/*
-9 [ 4, , ] 
-*/
 
 void testeListar()
 {
     show_log("testeListar()");
-    //###  int getDadosEstruturaAuxiliar(int posicao, int vetorAux[]); ###
     printf("%d\n", inserirNumeroEmEstrutura(2, 7) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, -9) == SUCESSO);
 
@@ -136,10 +119,6 @@ void testeListar()
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
 }
 
-/*
-2 [ , , ]
-*/
-
 void testeRetornarTodosNumeros()
 {
     show_log("testeRetornarTodosNumeros()");
@@ -151,9 +130,6 @@ void testeRetornarTodosNumeros()
     printf("%d\n", inserirNumeroEmEstrutura(2, 3) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, 8) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, 0) == SUCESSO);
-    /*
-2 [3,8,0]
-*/
 
     printf("%d\n", criarEstruturaAuxiliar(5, 10) == SUCESSO);
 
@@ -163,10 +139,7 @@ void testeRetornarTodosNumeros()
     printf("%d\n", inserirNumeroEmEstrutura(5, 6) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(5, 27) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(5, -6) == SUCESSO);
-    /*
-2 [3,8,0]
-5 [1,34,12,6,27,-6, , , , ]
-*/
+
     int vet[9];
 
     printf("%d\n", getDadosDeTodasEstruturasAuxiliares(vet) == SUCESSO);
@@ -207,23 +180,7 @@ void testeRetornarTodosNumeros()
     printf("%d\n", vet[7] == 27);
     printf("%d\n", vet[8] == -6);
 }
-/*
-2 [3,8,0]
-5 [1,34,12,6,27,-6, , , , ]
-*/
 
-/*
-int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
-Objetivo: modificar o tamanho da estrutura auxiliar da posição 'posicao' para o novo tamanho 'novoTamanho' + tamanho atual
-Suponha o tamanho inicial = x, e novo tamanho = n. O tamanho resultante deve ser x + n. Sendo que x + n deve ser sempre >= 1
-
-Rertono (int)
-    SUCESSO - foi modificado corretamente o tamanho da estrutura auxiliar
-    SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
-    POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
-    NOVO_TAMANHO_INVALIDO - novo tamanho não pode ser negativo
-    SEM_ESPACO_DE_MEMORIA - erro na alocação do novo valor
-*/
 void testeMudarTamanhoEstrutura()
 {
     show_log("testeMudarTamanhoEstrutura()");
@@ -234,13 +191,11 @@ void testeMudarTamanhoEstrutura()
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(0, 7) == POSICAO_INVALIDA);
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(1, 7) == SEM_ESTRUTURA_AUXILIAR);
 
-    //modificar para tamanho de 3 para 1
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(2, -2) == SUCESSO);
     printf("%d\n", getQuantidadeElementosEstruturaAuxiliar(2) == 1);
     printf("%d\n", getDadosEstruturaAuxiliar(2, vet) == SUCESSO);
     printf("%d\n", vet[0] == 3);
 
-    //modificar para tamanho de 1 para 4
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(2, 3) == SUCESSO);
     printf("%d\n", getQuantidadeElementosEstruturaAuxiliar(2) == 1);
     printf("%d\n", getDadosEstruturaAuxiliar(2, vet) == SUCESSO);
@@ -251,11 +206,6 @@ void testeMudarTamanhoEstrutura()
     printf("%d\n", inserirNumeroEmEstrutura(2, 6) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, 5) == SEM_ESPACO);
 }
-
-/*
-2 [3,4,-2,6]
-5 [1,34,12,6,27,-6, , , , ]
-*/
 
 void testeListaEncadeada()
 {
